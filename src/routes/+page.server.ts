@@ -16,7 +16,7 @@ export const load: PageServerLoad = async () => {
 	let spreadsheetDataRequest: Response;
 
 	try {
-		spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
+		spreadsheetDataRequest = await fetch(`https://stuco-test.vercel.app//api/events?maxResults=3`);
 	} catch (err) {
 		console.error(err);
 		return {
