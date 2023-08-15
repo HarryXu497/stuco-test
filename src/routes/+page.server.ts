@@ -1,4 +1,6 @@
+import { env } from '$env/dynamic/public';
 import type { PageServerLoad } from "./$types";
+
 
 interface SchoolEvent {
 	name: string;
@@ -8,7 +10,7 @@ interface SchoolEvent {
 
 export const load: PageServerLoad = async () => {
 	// TODO: make base url env variable
-	const spreadsheetDataRequest = await fetch('http://localhost:5173/api/events?maxResults=3');
+	const spreadsheetDataRequest = await fetch(`${env.PUBLIC_BASE_URL}/api/events?maxResults=3`);
 
 	const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
 
