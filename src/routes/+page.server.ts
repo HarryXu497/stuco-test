@@ -13,8 +13,12 @@ export const load: PageServerLoad = async () => {
 	// TODO: make base url env variable
 	console.log(`${base}/api/events?maxResults=3`)
 
+	return {
+		events: [],
+	}
+
 	let spreadsheetDataRequest: Response;
-	
+
 	try {
 		spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
 	} catch (err) {
