@@ -6,7 +6,6 @@ const load = async () => {
     description: row[1],
     date: row[2]
   }));
-  console.log(data);
   return { events: data };
 };
 export {

@@ -18,7 +18,5 @@ export const load: PageServerLoad = async () => {
 		date: row[2],
 	} as SchoolEvent));
 
-	console.log(data)
-
 	return { events: data };
 };

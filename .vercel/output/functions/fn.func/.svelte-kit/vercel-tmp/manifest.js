@@ -7,10 +7,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "sveltekit-github-pages/_app",
-	assets: new Set([".nojekyll","favicon.png","images/bg-vector.svg","images/image-1.jpg","images/image-2.jpg","images/image-3.jpg"]),
-	mimeTypes: {".png":"image/png",".svg":"image/svg+xml",".jpg":"image/jpeg"},
+	assets: new Set(["favicon.png","images/bg-vector.svg"]),
+	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.ac9de1a4.js","app":"_app/immutable/entry/app.bdabe5c1.js","imports":["_app/immutable/entry/start.ac9de1a4.js","_app/immutable/chunks/scheduler.e108d1fd.js","_app/immutable/chunks/singletons.30745cb6.js","_app/immutable/entry/app.bdabe5c1.js","_app/immutable/chunks/scheduler.e108d1fd.js","_app/immutable/chunks/index.a28bfc2a.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.f18bf591.js","app":"_app/immutable/entry/app.21f05bbf.js","imports":["_app/immutable/entry/start.f18bf591.js","_app/immutable/chunks/scheduler.e108d1fd.js","_app/immutable/chunks/singletons.184dcab8.js","_app/immutable/entry/app.21f05bbf.js","_app/immutable/chunks/scheduler.e108d1fd.js","_app/immutable/chunks/index.a28bfc2a.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			__memo(() => import('../output/server/nodes/0.js')),
 			__memo(() => import('../output/server/nodes/1.js')),
