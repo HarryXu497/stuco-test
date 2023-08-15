@@ -12,7 +12,17 @@ interface SchoolEvent {
 export const load: PageServerLoad = async () => {
 	// TODO: make base url env variable
 	console.log(`${base}/api/events?maxResults=3`)
-	const spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
+
+	let spreadsheetDataRequest: Response;
+	
+	try {
+		spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
+	} catch (err) {
+		console.error(err);
+		return {
+			events: []
+		}
+	}
 
 	const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
 
