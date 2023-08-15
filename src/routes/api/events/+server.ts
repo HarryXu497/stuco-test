@@ -3,6 +3,11 @@ import type { RequestHandler } from "@sveltejs/kit";
 import { google } from "googleapis";
 const sheets = google.sheets('v4');
 import { PUBLIC_SPREADSHEET_ID } from '$env/static/public';
+import { SECRET_CREDENTIALS } from '$env/static/private';
+
+const credentials = JSON.parse(
+	Buffer.from(SECRET_CREDENTIALS, "base64").toString()
+)
 
 /**
  * Authenticates the Google Sheets API service account and returns the authentication token.
@@ -10,7 +15,12 @@ import { PUBLIC_SPREADSHEET_ID } from '$env/static/public';
  */
 const initAuth = async () => {
 	const auth = new google.auth.GoogleAuth({
-		keyFile: './credentials.json',
+		projectId: "stuco-spreadsheet-test",
+		credentials: {
+			client_email: credentials.client_email,
+			private_key: credentials.private_key,
+
+		},
 		scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
 	})
 
