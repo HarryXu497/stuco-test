@@ -1,5 +1,6 @@
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import type { PageServerLoad } from "./$types";
+import { base } from '$app/paths';
 
 
 interface SchoolEvent {
@@ -10,8 +11,8 @@ interface SchoolEvent {
 
 export const load: PageServerLoad = async () => {
 	// TODO: make base url env variable
-	console.log(`${PUBLIC_BASE_URL}/api/events?maxResults=3`)
-	const spreadsheetDataRequest = await fetch(`${PUBLIC_BASE_URL}/api/events?maxResults=3`);
+	console.log(`${base}/api/events?maxResults=3`)
+	const spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
 
 	const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
 

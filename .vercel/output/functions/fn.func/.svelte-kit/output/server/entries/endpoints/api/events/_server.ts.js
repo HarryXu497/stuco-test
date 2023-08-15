@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-const PUBLIC_SPREADSHEET_ID = "13mrLbu24-eghoaGKJnFWIx4LuWvnpTci43Z5RR2V5Sw";
+import { P as PUBLIC_SPREADSHEET_ID } from "../../../../chunks/public.js";
 const sheets = google.sheets("v4");
 const initAuth = async () => {
   const auth = new google.auth.GoogleAuth({

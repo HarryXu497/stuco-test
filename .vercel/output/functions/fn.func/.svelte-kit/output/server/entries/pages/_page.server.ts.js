@@ -1,5 +1,7 @@
+import { a as PUBLIC_BASE_URL } from "../../chunks/public.js";
 const load = async () => {
-  const spreadsheetDataRequest = await fetch("http://localhost:5173/api/events?maxResults=3");
+  console.log(`${PUBLIC_BASE_URL}/api/events?maxResults=3`);
+  const spreadsheetDataRequest = await fetch(`${PUBLIC_BASE_URL}/api/events?maxResults=3`);
   const spreadsheetData = await spreadsheetDataRequest.json();
   const data = spreadsheetData.slice(1).map((row) => ({
     name: row[0],
