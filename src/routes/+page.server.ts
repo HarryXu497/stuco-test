@@ -10,27 +10,27 @@ interface SchoolEvent {
 }
 
 export const load: PageServerLoad = async () => {
-	console.log(`${base}/api/events?maxResults=3`)
+	console.log(`${PUBLIC_BASE_URL}/api/events?maxResults=3`)
 
 
 	let spreadsheetDataRequest: Response;
 
 	try {
-		spreadsheetDataRequest = await fetch(`https://stuco-test.vercel.app//api/events?maxResults=3`);
-	
-		const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
-
-		const data = spreadsheetData.slice(1).map(row => ({
-			name: row[0],
-			description: row[1],
-			date: row[2],
-		} as SchoolEvent));
-
-		return { events: data };
+		spreadsheetDataRequest = await fetch(`${PUBLIC_BASE_URL}/api/events?maxResults=3`);
 	} catch (err) {
 		console.error(err);
 		return {
 			events: []
 		}
 	}
+
+	const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
+
+	const data = spreadsheetData.slice(1).map(row => ({
+		name: row[0],
+		description: row[1],
+		date: row[2],
+	} as SchoolEvent));
+
+	return { events: data };
 };
