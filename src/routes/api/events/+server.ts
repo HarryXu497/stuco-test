@@ -15,7 +15,7 @@ const credentials = JSON.parse(
  */
 const initAuth = async () => {
 	const auth = new google.auth.GoogleAuth({
-		projectId: "stuco-spreadsheet-test",
+		projectId: credentials.project_id,
 		credentials: {
 			client_email: credentials.client_email,
 			private_key: credentials.private_key,

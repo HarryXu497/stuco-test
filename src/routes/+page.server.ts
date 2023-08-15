@@ -10,36 +10,27 @@ interface SchoolEvent {
 }
 
 export const load: PageServerLoad = async () => {
-	return {
-		events: [
-			{
-				name: "one",
-				description: "two",
-				date: "three",
-			} as SchoolEvent
-		]
+	console.log(`${base}/api/events?maxResults=3`)
+
+
+	let spreadsheetDataRequest: Response;
+
+	try {
+		spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
+	} catch (err) {
+		console.error(err);
+		return {
+			events: []
+		}
 	}
-	// console.log(`${base}/api/events?maxResults=3`)
 
+	const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
 
-	// let spreadsheetDataRequest: Response;
+	const data = spreadsheetData.slice(1).map(row => ({
+		name: row[0],
+		description: row[1],
+		date: row[2],
+	} as SchoolEvent));
 
-	// try {
-	// 	spreadsheetDataRequest = await fetch(`${base}/api/events?maxResults=3`);
-	// } catch (err) {
-	// 	console.error(err);
-	// 	return {
-	// 		events: []
-	// 	}
-	// }
-
-	// const spreadsheetData = <string[][]> await spreadsheetDataRequest.json();
-
-	// const data = spreadsheetData.slice(1).map(row => ({
-	// 	name: row[0],
-	// 	description: row[1],
-	// 	date: row[2],
-	// } as SchoolEvent));
-
-	// return { events: data };
+	return { events: data };
 };
